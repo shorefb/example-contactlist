@@ -16,12 +16,13 @@ class Sidebar extends React.Component {
 
   componentDidMount() {
       ServiceWorker.getContacts().then((res) => {
-        this.setState({contacts: res.data})
+        let contacts = res.data.contacts
+        this.setState({contacts: [...contacts]})
       })
   }
 
 render() {
-  let contacts = this.state.contacts.contacts
+  let contacts = this.state.contacts
   let single = this.state.single
 return (
   <div className="flex p-2 ">

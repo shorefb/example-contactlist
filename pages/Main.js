@@ -10,12 +10,14 @@ class Main extends React.Component {
         this.state={
             firstName: '',
             lastName: '',
-            emails: ''
+            emails: '',
+            hideForm: false
         }
         this.handleSubmit = this.handleSubmit.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.handleDelete = this.handleDelete.bind(this)
         this.handleCancel = this.handleCancel.bind(this)
+        this.toggleInput = this.toggleInput.bind(this)
     }
 
     handleChange(e) {
@@ -31,7 +33,6 @@ class Main extends React.Component {
         let last = this.state.lastName
         let newUser = {"firstName": first, "lastName": last}
         ServiceWorker.addContact(newUser)
-        console.log('clicked')
     }
 
     handleDelete = (e) => {
@@ -46,11 +47,20 @@ class Main extends React.Component {
             lastName: '',
             emails: ''
         }
-       console.log('clicked')
+    }
+
+    toggleInput() {
+        var x = document.getElementById("myDIV");
+        if (x.style.display === "none") {
+          x.style.display = "block";
+        } else {
+          x.style.display = "none";
+        }
     }
 
     render(){
         const {firstName, lastName, emails, id} = this.props.user
+        // const showForm = () => this.setState={hideForm: true}
     return (
         <div className='py-12'>
             <form onSubmit={this.handleSubmit}>
@@ -78,7 +88,12 @@ class Main extends React.Component {
                     </div>
                 </div>
                 <div className='flex py-2'>
+                    <div id="myDIV" style={{display: 'none'}}>
+                            <input className='border'></input>
+                    </div>
+                    <button type='button' onClick={this.toggleInput}>
                     <PlusCircleIcon className="h-6 text-blue-400 cursor-pointer transform hover:scale-110"/>
+                    </button>
                     <p className='px-1 text-blue-400'>add email</p>
                 </div>
             </div>
@@ -86,7 +101,7 @@ class Main extends React.Component {
             <div className='flex justify-between'>
                 <button onClick={this.handleDelete} className='bg-red-400 text-white px-5 cursor-pointer transform hover:scale-110'>Delete</button>
                 <div className='flex px-5'>
-                    <button onClick={this.handleCancel} className='border border-blue-400 px-5 cursor-pointer transform hover:scale-110'>Cancel</button>
+                    <button type='button' onClick={this.handleCancel} className='border border-blue-400 px-5 cursor-pointer transform hover:scale-110'>Cancel</button>
                     <button type='submit' className='bg-blue-400 text-white px-5 cursor-pointer transform hover:scale-110'>Save</button>
                 </div>
             </div>

@@ -50,11 +50,11 @@ function Main(single) {
             <div className="flex justify-between">
                 <div className="px-6">
                     <div className='text-xs text-gray-400'>First Name</div>
-                    <input className='bg-transparent border' placeholder={single.user.firstName} name='firstName' onChange={handleChange}/>
+                    <input className='bg-transparent border' name='firstName' onChange={handleChange}/>
                 </div>
                 <div className="px-6">
                     <div className='text-xs text-gray-400'>Last Name</div>
-                    <input className='bg-transparent border' name='lastName' placeholder={single.user.lastName} onChange={handleChange}/>
+                    <input className='bg-transparent border' name='lastName' onChange={handleChange}/>
                 </div>
             </div>
             {/* Emails and Add Email Button */}

@@ -6,7 +6,6 @@ function Main(single) {
               firstName: '',
               lastName: '',
               emails: '',})
-    const {firstName, lastName, emails, id} = single.user
 
     const handleChange = (e) => {
        this.setState({
@@ -16,8 +15,8 @@ function Main(single) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        let first = this.state.firstName
-        let last = this.state.lastName
+        let first = single.firstName
+        let last = single.lastName
         let newUser = {"firstName": first, "lastName": last}
         addContact(newUser)
     }
@@ -51,11 +50,11 @@ function Main(single) {
             <div className="flex justify-between">
                 <div className="px-6">
                     <div className='text-xs text-gray-400'>First Name</div>
-                    <input className='bg-transparent border' placeholder={firstName} value={firstName} name='firstName' onChange={handleChange}/>
+                    <input className='bg-transparent border' placeholder={single.user.firstName} name='firstName' onChange={handleChange}/>
                 </div>
                 <div className="px-6">
                     <div className='text-xs text-gray-400'>Last Name</div>
-                    <input className='bg-transparent border' name='lastName' value={lastName} placeholder={lastName} onChange={handleChange}/>
+                    <input className='bg-transparent border' name='lastName' placeholder={single.user.lastName} onChange={handleChange}/>
                 </div>
             </div>
             {/* Emails and Add Email Button */}
@@ -63,7 +62,7 @@ function Main(single) {
                 <div className='text-xs text-gray-400'>Email</div>
                 <div className='flex flex-col'>
                     <div className='flex flex-col px-1'>
-                        {emails?.map((each, idx) => 
+                        {single.user.emails?.map((each, idx) => 
                         <div key={idx} className='flex'>
                             {each}
                             <MinusCircleIcon className='opacity-0 hover:opacity-100 active:reveal h-6 px-3 text-red-400 cursor-pointer transform hover:scale-110'/>

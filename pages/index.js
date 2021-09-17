@@ -31,8 +31,10 @@ const toggleInput = () => {
 }
 
 export default function Index({data}) { 
+  
   const [single, setSingle] = useState({single: {}})
   const [contacts] = useState(data.contacts)
+  //setSingle({single: {firstName: 'firstName', lastName: 'lastName'}})
 return (
   <div className="flex p-2 ">
               <div className="">
@@ -62,4 +64,3 @@ return (
   </div>
   )
 }
-

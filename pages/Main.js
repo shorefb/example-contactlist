@@ -1,12 +1,13 @@
 import { PlusCircleIcon, MinusCircleIcon } from '@heroicons/react/solid' 
 import React, {useState} from 'react'
 
-function Main(single) {
+function Main(single) { 
     const {firstName, lastName, emails, id} = single.user
     const [contact, setContact] = useState({    
               firstName: '',
               lastName: '',
               emails: '',})
+
 
     const handleChange = (e) => {
        this.setState({
@@ -25,7 +26,6 @@ function Main(single) {
     const handleDelete = (e) => {
         e.preventDefault();
         let id = single.user.id
-        ServiceWorker.deleteContact(id)
     }
 
     const handleCancel = () => {
@@ -51,11 +51,11 @@ function Main(single) {
             <div className="flex justify-between">
                 <div className="px-6">
                     <div className='text-xs text-gray-400'>First Name</div>
-                    <input className='bg-transparent border' placeholder={'firstname' || firstName} name='firstName' onChange={handleChange}/>
+                    <input className='bg-transparent border' placeholder={firstName || 'first'} name='firstName' onChange={handleChange}/>
                 </div>
                 <div className="px-6">
                     <div className='text-xs text-gray-400'>Last Name</div>
-                    <input className='bg-transparent border' name='lastName'  placeholder={'lastname' || lastName} onChange={handleChange}/>
+                    <input className='bg-transparent border' name='lastName'  placeholder={lastName || 'last'} onChange={handleChange}/>
                 </div>
             </div>
             {/* Emails and Add Email Button */}
@@ -67,7 +67,7 @@ function Main(single) {
                         <div key={idx} className='flex'>
                             {each}
                             <MinusCircleIcon className='opacity-0 hover:opacity-100 active:reveal h-6 px-3 text-red-400 cursor-pointer transform hover:scale-110'/>
-                        </div>)}
+                        </div>) || 'email@email.com'}
                     </div>
                 </div>
                 <div className='flex py-2'>
@@ -92,5 +92,8 @@ function Main(single) {
         </div>
     )
 }
+Main.defaultProps = {single: {firstName: 'first', lastName: 'last'}}
 
 export default Main
+
+

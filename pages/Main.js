@@ -8,7 +8,6 @@ function Main(single) {
               lastName: '',
               emails: '',})
 
-
     const handleChange = (e) => {
        this.setState({
           [e.target.name]: e.target.value,
@@ -51,11 +50,11 @@ function Main(single) {
             <div className="flex justify-between">
                 <div className="px-6">
                     <div className='text-xs text-gray-400'>First Name</div>
-                    <input className='bg-transparent border' placeholder={firstName || 'first'} name='firstName' onChange={handleChange}/>
+                    <input className='bg-transparent border' placeholder={firstName || single.firstName} name='firstName' onChange={handleChange}/>
                 </div>
                 <div className="px-6">
                     <div className='text-xs text-gray-400'>Last Name</div>
-                    <input className='bg-transparent border' name='lastName'  placeholder={lastName || 'last'} onChange={handleChange}/>
+                    <input className='bg-transparent border' name='lastName'  placeholder={lastName || single.lastName} onChange={handleChange}/>
                 </div>
             </div>
             {/* Emails and Add Email Button */}
@@ -92,7 +91,8 @@ function Main(single) {
         </div>
     )
 }
-Main.defaultProps = {single: {firstName: 'first', lastName: 'last'}}
+
+Main.defaultProps = {firstName: 'first', lastName: 'last'}
 
 export default Main
 

@@ -2,6 +2,7 @@ import { PlusCircleIcon, MinusCircleIcon } from '@heroicons/react/solid'
 import React, {useState} from 'react'
 
 function Main(single) {
+    const {firstName, lastName, emails, id} = single.user
     const [contact, setContact] = useState({    
               firstName: '',
               lastName: '',
@@ -50,11 +51,11 @@ function Main(single) {
             <div className="flex justify-between">
                 <div className="px-6">
                     <div className='text-xs text-gray-400'>First Name</div>
-                    <input className='bg-transparent border' name='firstName' onChange={handleChange}/>
+                    <input className='bg-transparent border' placeholder={firstName || 'firstname'} name='firstName' onChange={handleChange}/>
                 </div>
                 <div className="px-6">
                     <div className='text-xs text-gray-400'>Last Name</div>
-                    <input className='bg-transparent border' name='lastName' onChange={handleChange}/>
+                    <input className='bg-transparent border' name='lastName'  placeholder={lastName || 'lastname'} onChange={handleChange}/>
                 </div>
             </div>
             {/* Emails and Add Email Button */}
@@ -62,7 +63,7 @@ function Main(single) {
                 <div className='text-xs text-gray-400'>Email</div>
                 <div className='flex flex-col'>
                     <div className='flex flex-col px-1'>
-                        {single.user.emails?.map((each, idx) => 
+                        {emails?.map((each, idx) => 
                         <div key={idx} className='flex'>
                             {each}
                             <MinusCircleIcon className='opacity-0 hover:opacity-100 active:reveal h-6 px-3 text-red-400 cursor-pointer transform hover:scale-110'/>
